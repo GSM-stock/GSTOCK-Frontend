@@ -87,7 +87,7 @@ export const Icon = styled.div`
 export const Input = styled.div`
   position: relative;
   width: 300px;
-  height: 60px;
+  height: 50px;
   left: 60px;
   display: flex;
   justify-content: center;

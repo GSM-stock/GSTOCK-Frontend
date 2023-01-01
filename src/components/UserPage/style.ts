@@ -48,16 +48,16 @@ export const Login = styled.div`
 `
 
 export const Signup = styled(Login)`
-  width: 70%;
+  width: 45%;
   transition: 1.3s;
 
   ${({ isLogin }: { isLogin: boolean | null }) => {
-    if (isLogin === true) return "width: 70%"
-    if (isLogin === false) return "width: 45%"
+    if (isLogin === true) return "width: 45%"
+    if (isLogin === false) return "width: 70%"
   }}/* animation: animate 1.2s 1s ease-in-out alternate forwards; */
 `
 
-export const LoginBox = styled.div`
+export const LoginBox = styled.form`
   width: 40%;
   height: 100%;
   display: flex;

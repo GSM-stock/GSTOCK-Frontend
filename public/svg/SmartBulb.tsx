@@ -8,7 +8,7 @@ export function SmartBulb() {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <g clip-path="url(#clip0_134_4)">
+      <g clipPath="url(#clip0_134_4)">
         <path d="M300 0H0V278H300V0Z" fill="url(#pattern1)" />
       </g>
       <defs>

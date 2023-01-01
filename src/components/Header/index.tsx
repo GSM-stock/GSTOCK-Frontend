@@ -1,6 +1,6 @@
 import * as S from "./style"
 import * as SVG from "../../../public/svg"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 
 export default function Header() {

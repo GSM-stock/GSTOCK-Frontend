@@ -5,7 +5,7 @@ type ActiveType = {
 }
 
 export const Layer = styled.div`
-  position: fixed;
+  position: relative;
   z-index: 100;
   width: 100%;
   height: 60px;

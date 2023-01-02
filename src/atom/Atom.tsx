@@ -9,6 +9,11 @@ type ItemType = {
   market: string
 }
 
+type DataInformType = {
+  price: number
+  change: number
+}
+
 export const UserItem = atom<ItemType>({
   key: "userItem",
   default: {
@@ -18,5 +23,24 @@ export const UserItem = atom<ItemType>({
     ko_name: "",
     en_name: "",
     market: "",
+  },
+})
+
+export const DataInform = atom<DataInformType>({
+  key: "dataInform",
+  default: {
+    price: 0,
+    change: 0,
+  },
+})
+
+type DateType = {
+  date: string
+}
+
+export const SelectDate = atom<DateType>({
+  key: "date",
+  default: {
+    date: "day",
   },
 })

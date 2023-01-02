@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import * as S from "./style"
 import * as SVG from "../../../public/svg"
 import axios from "axios"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { UserItem } from "../../atom/Atom"
 
 export default function StockSideBar() {
@@ -43,7 +43,7 @@ export default function StockSideBar() {
     },
   ])
 
-  const [userItem, setUserItem] = useRecoilState(UserItem)
+  const setUserItem = useSetRecoilState(UserItem)
 
   const searchRef = useRef<any>(null)
   useEffect(() => {

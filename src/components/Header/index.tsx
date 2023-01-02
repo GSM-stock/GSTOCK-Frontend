@@ -14,7 +14,7 @@ export default function Header() {
         <SVG.Logo />
       </S.Logo>
       <S.NavWrapper>
-        <S.Search active={searchToggle}>
+        {/* <S.Search active={searchToggle}>
           <S.Icon onClick={() => setSearchToggle((prev) => !prev)}></S.Icon>
           <S.Input>
             <input
@@ -35,7 +35,7 @@ export default function Header() {
         </Link>
         <Link href="#">
           <SVG.Human />
-        </Link>
+        </Link> */}
       </S.NavWrapper>
     </S.Layer>
   )

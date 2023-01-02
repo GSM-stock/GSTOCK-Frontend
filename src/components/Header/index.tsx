@@ -12,7 +12,16 @@ export default function Header() {
   useEffect(() => {
     const readMeta = async () => {
       try {
-        const meta = await axios.get("https://www.kakaocorp.com/page/")
+        const meta = await axios.get("https://www.kakaocorp.com/page/", {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods":
+              "GET,PUT,POST,PATCH,DELETE,OPTIONS,REQUEST",
+            "Access-Control-Allow-Headers":
+              "x-access-token, Origin, X-Requested-With, Content-Type, Accept",
+            "Access-Control-Allow-Credentials": true,
+          },
+        })
         console.log("kakao", meta)
       } catch (e) {
         console.log(e)
@@ -23,7 +32,16 @@ export default function Header() {
   useEffect(() => {
     const readMeta = async () => {
       try {
-        const meta = await axios.get("https://grig.gsm.dev/")
+        const meta = await axios.get("https://grig.gsm.dev/", {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods":
+              "GET,PUT,POST,PATCH,DELETE,OPTIONS,REQUEST",
+            "Access-Control-Allow-Headers":
+              "x-access-token, Origin, X-Requested-With, Content-Type, Accept",
+            "Access-Control-Allow-Credentials": true,
+          },
+        })
         console.log("ss", meta)
       } catch (e) {
         console.log(e)

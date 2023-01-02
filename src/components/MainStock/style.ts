@@ -1,7 +1,8 @@
 import styled from "@emotion/styled"
 
 export const Layer = styled.div`
-  width: 100%;
-  max-width: calc(100% - 284px);
+  width: 82%;
   height: 100%;
+  position: relative;
+  right: 0;
 `

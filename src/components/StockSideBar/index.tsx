@@ -23,7 +23,7 @@ export default function StockSideBar() {
     aliases?: any
   }
   const [sideBatToggle, setSideBatToggle] = useState(false)
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("카카오")
   const [item, setItem] = useState<ListType[]>([
     {
       id: 0,
@@ -46,18 +46,24 @@ export default function StockSideBar() {
   const setUserItem = useSetRecoilState(UserItem)
 
   const searchRef = useRef<any>(null)
-  useEffect(() => {
-    const GetData = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://api.alphasquare.co.kr/data/v2/stock/stocks?keyword=" + search
-        )
-        setItem(data.data)
-      } catch (e) {
-        console.log(e)
-      }
+
+  const GetData = async (res: string) => {
+    try {
+      const { data } = await axios.get(
+        "https://api.alphasquare.co.kr/data/v2/stock/stocks?keyword=" + search
+      )
+      setItem(data.data)
+    } catch (e) {
+      console.log(e)
     }
-    GetData()
+  }
+
+  useEffect(() => {
+    GetData("카카오")
+  }, [])
+
+  useEffect(() => {
+    GetData("")
   }, [search])
 
   return (
@@ -67,6 +73,7 @@ export default function StockSideBar() {
           <S.SearchWrapper active={sideBatToggle}>
             <i onClick={() => setSideBatToggle(true)}>
               <SVG.AddIcon />
+              <h3>종목변경</h3>
             </i>
             <S.SearchInput
               type="text"

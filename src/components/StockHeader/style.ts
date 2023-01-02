@@ -46,10 +46,10 @@ export const StockValue = styled.div<StockValueType>`
   align-items: center;
   gap: 20px;
   h1 {
-    color: ${(e) => (!e.valueColor ? "#3959B9" : "#B93939")};
+    color: ${(e) => (e.valueColor ? "#B93939" : "#3959B9")};
   }
   p {
-    color: ${(e) => (!e.valueColor ? "#3959B9" : "#B93939")};
+    color: ${(e) => (e.valueColor ? "#B93939" : "#3959B9")};
   }
 `
 
@@ -62,4 +62,26 @@ export const ItemImg = styled.img`
   align-items: center;
   object-fit: cover;
   background: #fff;
+`
+
+export const ChangeGrp = styled.div`
+  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`
+
+type SelectBtnType = {
+  select: boolean
+}
+
+export const SelectBtn = styled.button<SelectBtnType>`
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  font-size: 16px;
+  color: ${(e) => e.select && "#B93939"};
+  border-bottom: ${(e) => e.select && "1px solid"};
 `

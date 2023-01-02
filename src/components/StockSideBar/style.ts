@@ -95,7 +95,6 @@ export const SearchItemList = styled.div`
   height: 360px;
   overflow: scroll;
   overflow-x: hidden;
-  background: red;
   border: 1px solid #d9d9d9;
   border-radius: 10px;
   ::-webkit-scrollbar {

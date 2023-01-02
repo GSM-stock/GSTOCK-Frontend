@@ -1,3 +1,4 @@
+import Router from "next/router"
 import { ChangeEvent, LegacyRef, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import * as SVG from "../../../public/svg"
@@ -29,19 +30,27 @@ export default function UserPage() {
     formState: { errors },
   } = useForm({ mode: "onChange" })
 
-  const loginChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target)
-  }
-
-  const signupChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSignupInfo({ ...signupInfo, [e.target.name]: e.target.value })
-  }
-
-  const onSubmit = (data: any) => {
+  const onSubmit = () => {
     setLogin(true)
   }
   const onError = (err: any) => {
-    console.log(err[0])
+    if (err.id) return alert(err.id.message)
+    if (err.pw) return alert(err.pw.message)
+    if (err.pwCheck) return alert(err.pwCheck.message)
+
+    console.log("tlqkf")
+    setLogin(true)
+  }
+
+  const onSubmit2 = () => {
+    Router.push("/stock")
+  }
+  const onError2 = (err: any) => {
+    if (err.id) return alert(err.id.message)
+    if (err.pw) return alert(err.pw.message)
+
+    console.log("tlqkf")
+    Router.push("/stock")
   }
 
   return (
@@ -76,16 +85,23 @@ export default function UserPage() {
           </S.LoginBox>
         </S.Signup>
         <S.Login>
-          <S.LoginBox>
+          <S.LoginBox onSubmit={handleSubmit(onSubmit2, onError2)}>
             <SVG.SmartBulb />
-            <S.Input placeholder="ID" onChange={(e) => loginChange(e)} />
+            <S.Input
+              placeholder="ID"
+              {...register("id2", {
+                required: "이메일을 입력하지 않았습니다.",
+              })}
+            />
             <S.Input
               placeholder="password"
-              onChange={(e) => loginChange(e)}
               type="password"
+              {...register("pw2", {
+                required: "비밀번호를 입력하지 않았습니다.",
+              })}
             />
             <S.ButtonContainer>
-              <S.Button>Login</S.Button>
+              <S.Button type="submit">Login</S.Button>
               <span />
               <div>
                 <span>Don&apos;t have an account?</span>

@@ -83,26 +83,28 @@ export default function StockSideBar() {
             <S.SearchItemList>
               {item.map((e, index) => {
                 return (
-                  <S.Item
-                    key={index}
-                    onClick={() => {
-                      setSearch("")
-                      setUserItem({
-                        id: e.id,
-                        code: e.code,
-                        logo: e.logo,
-                        ko_name: e.ko_name,
-                        en_name: e.en_name,
-                        market: e.market,
-                      })
-                    }}
-                  >
-                    <S.ItemImg src={e.logo} />
-                    <div>
-                      <h1>{e.ko_name}</h1>
-                      <p>{e.code}</p>
-                    </div>
-                  </S.Item>
+                  e.logo && (
+                    <S.Item
+                      key={index}
+                      onClick={() => {
+                        setSearch("")
+                        setUserItem({
+                          id: e.id,
+                          code: e.code,
+                          logo: e.logo,
+                          ko_name: e.ko_name,
+                          en_name: e.en_name,
+                          market: e.market,
+                        })
+                      }}
+                    >
+                      <S.ItemImg src={e.logo} />
+                      <div>
+                        <h1>{e.ko_name}</h1>
+                        <p>{e.code}</p>
+                      </div>
+                    </S.Item>
+                  )
                 )
               })}
             </S.SearchItemList>

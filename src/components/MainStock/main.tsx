@@ -8,6 +8,7 @@ import axios from "axios"
 export default function Main() {
   const itemCode = useRecoilValue(UserItem)
   const selecDate = useRecoilValue(SelectDate)
+  console.log(itemCode, selecDate)
   type DataType = {
     date: number
     currentPrice: number

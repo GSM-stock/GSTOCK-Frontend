@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <S.Layer>
       <S.Logo>
-        <SVG.Logo />
+        <SVG.Logo size={36} />
       </S.Logo>
       <S.NavWrapper>
         {/* <S.Search active={searchToggle}>

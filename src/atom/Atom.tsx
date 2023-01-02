@@ -17,12 +17,12 @@ type DataInformType = {
 export const UserItem = atom<ItemType>({
   key: "userItem",
   default: {
-    id: 0,
-    code: "",
-    logo: "",
-    ko_name: "",
-    en_name: "",
-    market: "",
+    code: "035720",
+    en_name: "Kakao",
+    id: 2059,
+    ko_name: "카카오",
+    logo: "https://file.alphasquare.co.kr/media/images/stock_logo/kr/035720.png",
+    market: "kospi",
   },
 })
 

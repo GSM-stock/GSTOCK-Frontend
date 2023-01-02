@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil"
 import { DataInform } from "../../atom/Atom"
 import * as S from "./style"
 import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify"
 
 export default function BuyForm({ mode }: { mode: string }) {
   const inForm = useRecoilValue(DataInform)
@@ -43,10 +44,11 @@ export default function BuyForm({ mode }: { mode: string }) {
       <S.BuyBtn
         onClick={() => {
           if (inForm.price * Number(amount) === 0)
-            alert(`${mode}에 실패하였습니다.`)
+            toast.error(`${mode}에 실패하였습니다.`)
           else {
-            alert(`${mode}에 성공하였습니다.`)
+            toast.success(`${mode}에 성공하였습니다.`)
           }
+          setAmount("")
         }}
         colorMode={mode == "매수" ? "#FC4B4B" : "#4C79FF"}
       >

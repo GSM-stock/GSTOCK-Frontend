@@ -1,15 +1,16 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useRecoilState } from "recoil"
-import { UserItem } from "../../atom/Atom"
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
+import { DataInform, SelectDate, UserItem } from "../../atom/Atom"
 import * as S from "./style"
 import * as SVG from "../../../public/svg"
 
-export default function StcokHeader({
-  informHandle,
-}: {
-  informHandle: () => void
-}) {
+export default function StcokHeader() {
+  //   {
+  //   informHandle,
+  // }: {
+  //   informHandle: () => void
+  // }
   type DataType = {
     code: string
     dt: number
@@ -23,11 +24,9 @@ export default function StcokHeader({
     lower_limit_price: number
     prev_close: number
   }
-  const [itemCode, setItemCode] = useRecoilState(UserItem)
-  const [data, setData] = useState({
-    price: "",
-    change: 0,
-  })
+  const itemCode = useRecoilValue(UserItem)
+  const [inForm, setInForm] = useRecoilState(DataInform)
+  const [date, setDate] = useRecoilState(SelectDate)
 
   useEffect(() => {
     const GetData = async () => {
@@ -36,18 +35,18 @@ export default function StcokHeader({
           "https://api.alphasquare.co.kr/data/v2/price/current-price?code=" +
             itemCode.code
         )
-        setData({
-          price: data[itemCode.code].close.toFixed(2),
+        setInForm({
+          price: data[itemCode.code].close,
           change:
-            (data[itemCode.code].prev_close / data[itemCode.code].close) * 100 -
-            100,
+            100 -
+            (data[itemCode.code].prev_close / data[itemCode.code].close) * 100,
         })
       } catch (e) {
         console.log(e)
       }
     }
     GetData()
-  }, [itemCode])
+  }, [itemCode, setInForm])
 
   return (
     <S.Layer>
@@ -58,16 +57,51 @@ export default function StcokHeader({
           <h1>{itemCode.ko_name}</h1>
           <p>{itemCode.code}</p>
         </>
-        {data.price !== "" && (
-          <S.StockValue valueColor={Math.sign(data.change) >= 0 ? true : false}>
-            <h1>{data.price}</h1>
-            <p>{data.change.toFixed(2)}</p>
-          </S.StockValue>
+        {inForm.price !== 0 && (
+          <>
+            <S.StockValue valueColor={inForm.change >= 0 ? true : false}>
+              <h1>{inForm.price.toFixed(2)}</h1>
+              <p>
+                {inForm.change >= 0
+                  ? "+" + inForm.change.toFixed(2)
+                  : inForm.change.toFixed(2)}
+                %
+              </p>
+            </S.StockValue>
+            <S.ChangeGrp>
+              <S.SelectBtn
+                select={date.date === "day"}
+                onClick={() => setDate({ date: "day" })}
+              >
+                일
+              </S.SelectBtn>
+              <S.SelectBtn
+                select={date.date === "week"}
+                onClick={() => setDate({ date: "week" })}
+              >
+                주
+              </S.SelectBtn>
+              <S.SelectBtn
+                select={date.date === "month"}
+                onClick={() => setDate({ date: "month" })}
+              >
+                월
+              </S.SelectBtn>
+              <S.SelectBtn
+                select={date.date === "year"}
+                onClick={() => setDate({ date: "year" })}
+              >
+                년
+              </S.SelectBtn>
+            </S.ChangeGrp>
+          </>
         )}
       </S.StockHeaderTitle>
-      <i onClick={() => informHandle()}>
+      {/* <i
+      onClick={() => itemCode.code && informHandle()}
+      >
         <SVG.SideButton />
-      </i>
+      </i> */}
     </S.Layer>
   )
 }

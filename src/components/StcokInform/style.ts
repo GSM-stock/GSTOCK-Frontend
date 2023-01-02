@@ -1,14 +1,12 @@
 import styled from "@emotion/styled"
 
 type LayerType = {
-  action: boolean
+  actio: boolean
 }
 
-export const Layer = styled.div<LayerType>`
+export const Layer = styled.div`
   transition: 0.5s;
-  width: ${({ action }) => (action ? "0" : "284px")};
-  visibility: ${({ action }) => (action ? "hidden" : "visible")};
-  /* height: auto; */
+  width: 284px;
   background: #ffffff;
   border: 1px solid #d9d9d9;
   border-radius: 10px;
@@ -58,6 +56,7 @@ export const InformLayer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+  white-space: nowrap;
   h1 {
     font-family: "Inter";
     font-style: normal;
@@ -84,32 +83,112 @@ export const ItemImg = styled.img`
   background: #fff;
 `
 
+export const ModeForm = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`
+
 //buyform
 
 export const BuyFormLayer = styled.div`
-  width: 100%;
+  width: 217px;
   height: 100%;
 `
 
 export const BuyForm = styled.form`
   width: 100%;
-  height: 150px;
-  background: red;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   label {
-    width: 100%;
+    width: 218px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    input {
-      width: 218px;
-      height: 42px;
-      background: #ffffff;
-      border: 1px solid #d9d9d9;
+    margin-bottom: 10px;
+    margin-top: 38px;
+    a {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      color: #ababab;
+    }
+    span {
+      position: relative;
+      width: 100%;
+      height: auto;
+      a {
+        width: auto;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      input {
+        width: 100%;
+        height: 42px;
+        background: #ffffff;
+        border: 1px solid #d9d9d9;
+        text-align: right;
+        padding: 0 30px;
+      }
+    }
+    :nth-child(1) {
+      input {
+        :focus {
+          outline: none;
+        }
+      }
     }
   }
+`
+
+export const BuyInform = styled.div`
+  margin-top: 89px;
+  width: 100%;
+  height: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  color: #ababab;
+  > p {
+    font-size: 13px;
+    width: 100%;
+    text-align: end;
+    a {
+      color: #b93939;
+    }
+  }
+  div {
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    a {
+      color: #000000;
+    }
+  }
+`
+
+type BuyBtnType = {
+  colorMode: string
+}
+
+export const BuyBtn = styled.button<BuyBtnType>`
+  width: 100%;
+  height: 40px;
+  background: ${({ colorMode }) => colorMode};
+  outline: none;
+  border: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  color: #ffffff;
 `

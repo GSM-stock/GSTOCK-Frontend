@@ -1,14 +1,17 @@
-export function Logo() {
+export function Logo({ size }: { size: number }) {
+  const width: string = String(227 * size)
+  const height: string = String(218 * size)
+
   return (
     <svg
-      width="57"
-      height="48"
-      viewBox="0 0 227 218"
+      width={width}
+      height={height}
+      viewBox={"0 0 " + width + " " + height}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <rect width="227" height="218" fill="url(#pattern0)" />
+      <rect width={width} height={height} fill="url(#pattern0)" />
       <defs>
         <pattern
           id="pattern0"

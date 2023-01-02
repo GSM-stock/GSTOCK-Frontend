@@ -1,3 +1,5 @@
+export * from "./Logo"
+export * from "./SmartBulb"
 export * from "./Human"
 export * from "./SunIcon"
 export * from "./TrophyIcon"

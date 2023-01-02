@@ -46,8 +46,8 @@ export default function UserPage() {
     Router.push("/stock")
   }
   const onError2 = (err: any) => {
-    if (err.id) return alert(err.id.message)
-    if (err.pw) return alert(err.pw.message)
+    if (err.id2) return alert(err.id.message)
+    if (err.pw2) return alert(err.pw.message)
 
     console.log("tlqkf")
     Router.push("/stock")

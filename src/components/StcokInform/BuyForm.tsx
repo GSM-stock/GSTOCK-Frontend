@@ -52,7 +52,7 @@ export default function BuyForm({ mode }: { mode: string }) {
         }}
         colorMode={mode == "매수" ? "#FC4B4B" : "#4C79FF"}
       >
-        구매
+        {mode == "매수" ? "매수" : "매도"}
       </S.BuyBtn>
     </S.BuyFormLayer>
   )

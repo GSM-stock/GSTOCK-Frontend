@@ -8,6 +8,7 @@ export const Layer = styled.div<SideToggleType>`
   width: ${({ active }) => (active ? "320px" : "113px")};
   height: 100%;
   transition: 0.5s;
+  min-width: 16%;
 `
 
 export const ItemList = styled.div`
@@ -52,6 +53,8 @@ export const SearchWrapper = styled.div<SearchInputType>`
     justify-content: center;
     align-items: center;
     z-index: 1;
+    gap: 10px;
+    padding-right: 10px;
   }
   input {
     transition: 0.5s;

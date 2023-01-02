@@ -11,12 +11,20 @@ const style = css`
 
   html,
   body {
+    width: 100%;
+    height: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
+    background: #fff;
   }
 
-  body {
-    background: #fff;
+  body > #__next {
+    width: 100%;
+    height: 100%;
+  }
+
+  button {
+    cursor: pointer;
   }
 
   a {

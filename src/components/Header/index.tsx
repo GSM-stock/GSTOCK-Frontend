@@ -1,13 +1,36 @@
 import * as S from "./style"
 import * as SVG from "../../../public/svg"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import axios from "axios"
 
 export default function Header() {
   const [searchToggle, setSearchToggle] = useState(false)
   const [darkMode, setDarkMode] = useState(true)
   const [input, setInput] = useState("")
 
+  useEffect(() => {
+    const readMeta = async () => {
+      try {
+        const meta = await axios.get("https://www.kakaocorp.com/page/")
+        console.log("kakao", meta)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    readMeta()
+  }, [])
+  useEffect(() => {
+    const readMeta = async () => {
+      try {
+        const meta = await axios.get("https://grig.gsm.dev/")
+        console.log("ss", meta)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    readMeta()
+  }, [])
   return (
     <S.Layer>
       <S.Logo>
